@@ -14,7 +14,7 @@ Display a prompt and wait for the user to type a command. A command line always 
 -   The command lines are made only of one word. No arguments will be passed to programs.
 -   If an executable cannot be found, print an error message and display the prompt again.
 -   Handle errors.
--   You have to handle the “end of file” condition (Ctrl+D)
+-   You have to handle the “end of file” condition (Ctrl+D) <br/>
 You don’t have to:
 -   use the PATH
 -   implement built-ins
