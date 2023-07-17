@@ -1,5 +1,5 @@
 # 0x16. C - SIMPLE SHELL
-
+The simple shell project aims to progressively build a simple shell that can handle basic commands, including those with arguments, handle errors, and implement built-in commands like exit and env.
 
 ### Task 0: Betty Would Be Proud
 - Write a beautiful code that passes the Betty checks
@@ -14,7 +14,7 @@ Display a prompt and wait for the user to type a command. A command line always 
 -   The command lines are made only of one word. No arguments will be passed to programs.
 -   If an executable cannot be found, print an error message and display the prompt again.
 -   Handle errors.
--   You have to handle the “end of file” condition (Ctrl+D) <br/>
+-   You have to handle the “end of file” condition (Ctrl+D) <br/><br/>
 You don’t have to:
 -   use the PATH
 -   implement built-ins
@@ -22,9 +22,28 @@ You don’t have to:
 -   be able to move the cursor
 -   handle commands with arguments
 
+### Task 3: Simple shell 0.2
+Simple shell 0.1 +
+-   Handle command lines with arguments
+
+### Task 4: Simple shell 0.3
+Simple shell 0.2 +
+-   Handle the PATH
+-   fork must not be called if the command doesn’t exist
+
+### Task 5:  Simple shell 0.4
+Simple shell 0.3 +
+-   Implement the exit built-in, that exits the shell
+-   Usage: exit
+-   You don’t have to handle any argument to the built-in exit
+
+### Task 6: Simple shell 1.0
+Simple shell 0.4 +
+-   Implement the env built-in, that prints the current environment
+
 
 ### Contributors
-[Otavie Okuoyo](https://github.com/Otavie)
+[Otavie Okuoyo](https://github.com/Otavie) <br/>
 [Matthew Emmanuel](https://github.com/mathewCodex)
 
 
