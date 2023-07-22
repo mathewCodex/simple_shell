@@ -10,6 +10,8 @@
 #define MAX_COMMAND_LENGTH 1024
 #define MAX_ARGS 64
 
+#define UNUSED(x) (void)(x)
+
 /**
  * read_command - Read a command from the user input.
  * 
@@ -106,6 +108,8 @@ void execute_command(char **args)
 */
 void handle_signal(int signal)
 {
+    UNUSED(signal);
+    
     printf("\n$ ");
     fflush(stdout);
 }
