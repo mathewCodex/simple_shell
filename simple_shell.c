@@ -6,21 +6,21 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <fcntl.h>
-#include <dirent.h>
+#include <direct.h>
 
 #define MAX_COMMAND_ARG 1024
 #define MAX_ARG 64
 
 int main()
 {
-	char *command;
+    char *command;
     char **args;
 
     signal(SIGINT, handle_signal);
 
     while (1)
     {
-        printf("#cisfun$ ");
+        printf("$ ");
         command = read_command();
         args = parse_command(command);
 
@@ -30,7 +30,6 @@ int main()
         }
         else if (strcmp(args[0], "env") == 0)
         {
-		extern char **environ;
             char **env = environ;
 
             while (*env != NULL)
