@@ -104,7 +104,7 @@ void execute_command(char **args)
  * handle_signal - Handle the SIGINT signal (Ctrl C)
  * @signal: The signal number
 */
-void handle_signal(int UNUSED(signal))
+void handle_signal(int signal)
 {
     printf("\n$ ");
     fflush(stdout);
