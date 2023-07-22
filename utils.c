@@ -2,6 +2,20 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+
+// #include "utils.h"
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <unistd.h>
+// #include <string.h>
+// #include <sys/types.h>
+// #include <sys/wait.h>
+// #include <fcntl.h>
+// #include <dirent.h>
+
 
 #define MAX_COMMAND_LENGTH 1024
 #define MAX_ARGS 64
@@ -60,6 +74,41 @@ char **parse_command(char *command)
     }
     args[i] = NULL;
     return (args);
+}
+
+/**
+ * execute_command - Execute a command
+ * @args: An array of strings containing the command and its arguments
+ * 
+ * Return: No return value
+*/
+void execute_command(char **args)
+{
+    pid_t pid;
+    pid_t wait_pid;
+    int status;
+
+    pid = fork();
+
+    if (pid == 0)
+    {
+        if (execvp(args[0], args) == -1)
+        {
+            perror("Execution error");
+        }
+        exit(EXIT_FAILURE);
+    }
+    else if (pid < 0)
+    {
+        perror("Forking error");
+    }
+    else
+    {
+        do
+        {
+            wait_pid = waitpid(pid, &status, WUNTRACED);
+        } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+    }
 }
 
 /**
