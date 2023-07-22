@@ -75,7 +75,6 @@ char **parse_command(char *command)
 void execute_command(char **args)
 {
     pid_t pid;
-    pid_t wait_pid;
     int status;
 
     pid = fork();
@@ -96,7 +95,7 @@ void execute_command(char **args)
     {
         do
         {
-            wait_pid = waitpid(pid, &status, WUNTRACED);
+            wait(&status);
         } while (!WIFEXITED(status) && !WIFSIGNALED(status));
     }
 }
