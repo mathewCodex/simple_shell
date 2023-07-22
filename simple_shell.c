@@ -6,7 +6,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <fcntl.h>
-#include <direct.h>
+#include <dirent.h>
 
 #define MAX_COMMAND_ARG 1024
 #define MAX_ARG 64

@@ -50,3 +50,54 @@ Simple shell 0.4 +
 ### Duration:
 #### Start Date: Wednesday, July 12, 2023
 #### End Date: Thursday, July 27, 2023
+
+
+
+
+
+
+
+
+<!-- 
+# Simple Shell
+
+This is a simple UNIX command line interpreter (shell) that allows users to enter commands and execute them. The shell supports basic command execution, displaying the current environment, and exiting the shell.
+
+## How to Use
+
+1. Clone the repository to your local machine.
+2. Compile the code using the following command:
+
+   ```
+   gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o simple_shell
+   ```
+
+3. Run the compiled executable:
+
+   ```
+   ./simple_shell
+   ```
+
+4. The shell will display a prompt (`$`) where you can enter commands.
+5. Enter a command and press Enter to execute it.
+6. The prompt will be displayed again after each command execution.
+7. To exit the shell, enter the command `exit` and press Enter.
+
+## Supported Commands
+
+1. Execution of external commands: You can run any command available in your system, as long as it does not require any arguments.
+2. `env` command: Enter `env` to display the current environment variables.
+
+## Limitations
+
+1. The shell only supports commands without arguments.
+2. Advanced features like pipes, redirections, and semicolons are not supported.
+3. Special characters like quotes, backticks, and ampersands are not handled.
+
+## Additional Notes
+
+1. The shell uses the `getline` function to read user input and the `strtok` function to parse the input into individual command and argument strings.
+2. The `execute_command` function uses the `fork` system call to create a child process to execute the entered command.
+3. The child process runs the command using `execvp`, and the parent process waits for the child process to complete using `wait`.
+
+Feel free to explore and modify the code to add more features or improve the functionality of the shell according to your requirements. -->
