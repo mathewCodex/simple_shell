@@ -107,6 +107,6 @@ void execute_command(char **args)
 */
 void handle_signal(int signal)
 {
-    printf("\n#cisfun$ ");
+    printf("\n$ ");
     fflush(stdout);
 }
