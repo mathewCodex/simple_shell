@@ -1,15 +1,10 @@
 #include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <signal.h>
 #include <unistd.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <fcntl.h>
-#include <dirent.h>
 
 #define MAX_COMMAND_ARG 1024
-#define MAX_ARG 64
 
 /**
  * main - Entry point of the program
@@ -19,36 +14,21 @@
 int main(void)
 {
 	char *command;
-	char **args;
 
 	signal(SIGINT, handle_signal);
 	while (1)
 	{
-		printf("$ ");
+		printf("#cisfun$ ");
 		command = read_command();
-		args = parse_command(command);
 
-		if (strcmp(args[0], "exit") == 0)
+		if (command == NULL)
 		{
 			break;
 		}
-		else if (strcmp(args[0], "env") == 0)
-		{
-			char **env = environ;
 
-			while (*env != NULL)
-			{
-				printf("%s\n", *env);
-				env++;
-			}
-		}
-		else
-		{
-			execute_command(args);
-		}
+		execute_command(command);
 
 		free(command);
-		free(args);
 	}
 
 	return (0);
