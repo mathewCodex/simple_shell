@@ -42,12 +42,52 @@ char *read_command(void)
 }
 
 /**
+ * parse_command - Parse the command into arguments
+ * @command: The command to be parsed
+ *
+ * Return: A double pointer to an array of arguments
+ */
+char **parse_command(char *command)
+{
+	char **args = (char **)malloc(MAX_COMMAND_LENGTH * sizeof(char *));
+	char *token;
+	int i;
+
+	if (!args)
+	{
+		perror("Memory allocation error");
+		exit(EXIT_FAILURE);
+	}
+
+	token = strtok(command, " ");
+	i = 0;
+
+	while (token != NULL)
+	{
+		args[i] = token;
+		i++;
+
+		if (i >= MAX_COMMAND_LENGTH)
+		{
+			fprintf(stderr, "Too many arguments\n");
+			exit(EXIT_FAILURE);
+		}
+
+		token = strtok(NULL, " ");
+	}
+
+	args[i] = NULL;
+
+	return (args);
+}
+
+/**
  * execute_command - Execute a command
- * @command: A command to be executed
+ * @args: An array of commands to be executed
  *
  * Return: No return value
 */
-void execute_command(char *command)
+void execute_command(char **args)
 {
 	pid_t pid;
 	int status;
@@ -55,13 +95,11 @@ void execute_command(char *command)
 	pid = fork();
 	if (pid == 0)
 	{
-		char *args[2];
-
-		args[0] = command;
-		args[1] = NULL;
-		execvp(command, args);
-		perror("Execution error");
-		exit(EXIT_FAILURE);
+		if (execvp(args[0], args) == -1)
+		{
+			perror("Execution error");
+			exit(EXIT_FAILURE);
+		}
 	}
 	else if (pid < 0)
 	{

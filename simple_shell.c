@@ -14,6 +14,7 @@
 int main(void)
 {
 	char *command;
+	char **args;
 
 	signal(SIGINT, handle_signal);
 	while (1)
@@ -26,9 +27,12 @@ int main(void)
 			break;
 		}
 
-		execute_command(command);
+		args = parse_command(command);
+
+		execute_command(args);
 
 		free(command);
+		free(args);
 	}
 
 	return (0);
