@@ -11,41 +11,45 @@
 #define MAX_COMMAND_ARG 1024
 #define MAX_ARG 64
 
-int main()
+/**
+ * main - Entry point of the program
+ *
+ * Return: 0 (Success)
+ */
+int main(void)
 {
-    char *command;
-    char **args;
+	char *command;
+	char **args;
 
-    signal(SIGINT, handle_signal);
+	signal(SIGINT, handle_signal);
+	while (1)
+	{
+		printf("$ ");
+		command = read_command();
+		args = parse_command(command);
 
-    while (1)
-    {
-        printf("$ ");
-        command = read_command();
-        args = parse_command(command);
+		if (strcmp(args[0], "exit") == 0)
+		{
+			break;
+		}
+		else if (strcmp(args[0], "env") == 0)
+		{
+			char **env = environ;
 
-        if (strcmp(args[0], "exit") == 0)
-        {
-            break;
-        }
-        else if (strcmp(args[0], "env") == 0)
-        {
-            char **env = environ;
+			while (*env != NULL)
+			{
+				printf("%s\n", *env);
+				env++;
+			}
+		}
+		else
+		{
+			execute_command(args);
+		}
 
-            while (*env != NULL)
-            {
-                printf("%s\n", *env);
-                env++;
-            }
-        }
-        else
-        {
-            execute_command(args);
-        }
+		free(command);
+		free(args);
+	}
 
-        free(command);
-        free(args);
-    }
-
-    return (0);
+	return (0);
 }
