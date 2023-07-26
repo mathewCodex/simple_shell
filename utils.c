@@ -17,21 +17,45 @@
  * 
  * Return: The command entered by the user as a string
 */
+
+#include "utils.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+#include <signal.h>
+
+#define MAX_COMMAND_LENGTH 1024
+#define MAX_ARGS 64
+
 char *read_command(void)
 {
-    char *command;
-    size_t buffer_size;
-    size_t length;
+    char *command = NULL;
+    size_t buffer_size = 0;
+    ssize_t length = getline(&command, &buffer_size, stdin);
 
-    command = NULL;
-    buffer_size = 0;
-    getline(&command, &buffer_size, stdin);
-    length = strlen(command);
+    if (length == -1)
+    {
+        if (feof(stdin))
+        {
+            printf("\nExiting shell...\n");
+            exit(EXIT_SUCCESS);
+        }
+        else
+        {
+            perror("Error reading command");
+            exit(EXIT_FAILURE);
+        }
+    }
+
     if (command[length - 1] == '\n')
     {
         command[length - 1] = '\0';
     }
-    return (command);
+    return command;
 }
 
 /**
