@@ -91,21 +91,19 @@ void execute_command(char **args)
 {
 	pid_t pid;
 	int status;
-	const char error_msg_exe[] = "Execution error\n";
-	const char error_msg_fork[] = "Forking error\n";
 
 	pid = fork();
 	if (pid == 0)
 	{
 		if (execve(args[0], args, NULL) == -1)
 		{
-			write(STDERR_FILENO, error_msg_exe, sizeof(error_msg_exe) - 1);
+			perror("Execution error");
 			_exit(EXIT_FAILURE);
 		}
 	}
 	else if (pid < 0)
 	{
-		write(STDERR_FILENO, error_msg_fork, sizeof(error_msg_fork) - 1);
+		perror("Forking error");
 	}
 	else
 	{
