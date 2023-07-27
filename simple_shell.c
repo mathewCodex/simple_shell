@@ -19,7 +19,7 @@ int main(void)
 	signal(SIGINT, handle_signal);
 	while (1)
 	{
-		printf("#cisfun$ ");
+		printf("$");
 		command = read_command();
 
 		if (command == NULL)
