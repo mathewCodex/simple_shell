@@ -120,6 +120,6 @@ void execute_command(char **args)
 void handle_signal(int signal)
 {
 	UNUSED(signal);
-	printf("\n#cisfun$ ");
+	printf(" ");
 	fflush(stdout);
 }
