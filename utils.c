@@ -84,15 +84,15 @@ char **parse_command(char *command)
 /**
  * execute_command - Execute a command
  * @args: An array of commands to be executed
- *
  * Return: No return value
-*/
+ */
 void execute_command(char **args)
 {
 	pid_t pid;
 	int status;
 
 	pid = fork();
+
 	if (pid == 0)
 	{
 		if (execve(args[0], args, NULL) == -1)
@@ -114,9 +114,9 @@ void execute_command(char **args)
 }
 
 /**
- * handle_signal - Handle the SIGINT signal (Ctrl C)
+ * handle_signal - Handle the SIGNINT (ctrl c)
  * @signal: The signal number
-*/
+ */
 void handle_signal(int signal)
 {
 	UNUSED(signal);
