@@ -1,15 +1,17 @@
 #include "main.h"
 
 /**
- * strcat_cd - function that concatenates the message for cd error
+ * strcat_cdir - function that concat the message for cdir err
  *
- * @datash: data relevant (directory)
- * @msg: message to print
- * @error: output message
- * @ver_str: counter lines
- * Return: error message
+ * @datash: relevant data (dir)
+ * @msg: print message
+ * @error:  msg output
+ * @ver_str: ctr lines
+ * Return: err msg
  */
-char *strcat_cd(data_shell *datash, char *msg, char *error, char *ver_str)
+
+
+char *strcat_cdir(data_shell *datash, char *msg, char *error, char *ver_str)
 {
 	char *illegal_flag;
 
@@ -39,11 +41,11 @@ char *strcat_cd(data_shell *datash, char *msg, char *error, char *ver_str)
 }
 
 /**
- * error_get_cd - error message for cd command in get_cd
- * @datash: data relevant (directory)
+ * error_cd - err message for cd command in getting cd
+ * @datash: relevant data(dir)
  * Return: Error message
  */
-char *error_get_cd(data_shell *datash)
+char *error_cd(data_shell *datash)
 {
 	int length, len_id;
 	char *error, *ver_str, *msg;
@@ -51,12 +53,12 @@ char *error_get_cd(data_shell *datash)
 	ver_str = aux_itoa(datash->counter);
 	if (datash->args[1][0] == '-')
 	{
-		msg = ": Illegal option ";
+		msg = ": unknown option ";
 		len_id = 2;
 	}
 	else
 	{
-		msg = ": can't cd to ";
+		msg = ": can't change directory to: ";
 		len_id = _strlen(datash->args[1]);
 	}
 
@@ -70,7 +72,7 @@ char *error_get_cd(data_shell *datash)
 		return (NULL);
 	}
 
-	error = strcat_cd(datash, msg, error, ver_str);
+	error = strcat_cdir(datash, msg, error, ver_str);
 
 	free(ver_str);
 
@@ -78,11 +80,11 @@ char *error_get_cd(data_shell *datash)
 }
 
 /**
- * error_not_found - generic error message for command not found
+ * error_found - generic error message for command not found
  * @datash: data relevant (counter, arguments)
  * Return: Error message
  */
-char *error_not_found(data_shell *datash)
+char *error_found(data_shell *datash)
 {
 	int length;
 	char *error;
@@ -142,3 +144,4 @@ char *error_exit_shell(data_shell *datash)
 
 	return (error);
 }
+
