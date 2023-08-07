@@ -24,7 +24,7 @@ int _strlen(const char *str)
  *
  * Return: A pointer to the destination buffer.
  */
-char _strcpy(char *dest, char *src)
+char *_strcpy(char *dest, char *src)
 {
 	char *dest_start = dest;
 
@@ -47,7 +47,7 @@ char _strcpy(char *dest, char *src)
  *
  * Return: Pointer to the destination buffer
  */
-char *_strcat(char *dest, char *src)
+char *_strcat(char *dest, const char *src)
 {
 	char *p;
 

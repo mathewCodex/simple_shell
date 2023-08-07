@@ -109,7 +109,7 @@ int _strcmp(char *str1, char *str2);
 void rev_string(char *str);
 
 /* string_funcs_3.c */
-int _isdigit(int chr);
+int _isdigit(char chr);
 char *_strtok(char str[], const char *delim);
 
 /* lists.c */

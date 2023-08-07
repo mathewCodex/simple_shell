@@ -6,7 +6,7 @@
  *
  * Return: 1 if digit, 0 otherwise
  */
-int _isdigit(int chr)
+int _isdigit(char chr)
 {
 	if (chr >= '0' && chr <= '9')
 	{
