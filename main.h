@@ -92,6 +92,26 @@ typedef struct builtin_s
 	int (*f)(data_shell *datash);
 } builtin_t;
 
+/* read-line.c */
+char *read_line(int *eof_indicator);
+
+/* string_funcs_1.c */
+unsigned int _strspn(char *str, char *accept);
+char *_strchr(char *str, char chr);
+int cmp_chars(char str[], const char *delim);
+char *_strdup(const char *str);
+
+/* string_funcs_2.c */
+int _strlen(const char *str);
+char *_strcpy(char *dest, char *src);
+char *_strcat(char *dest, const char *src);
+int _strcmp(char *str1, char *str2);
+void rev_string(char *str);
+
+/* string_funcs_3.c */
+int _isdigit(int chr);
+char *_strtok(char str[], const char *delim);
+
 /* lists.c */
 sep_list *add_sep_node_end(sep_list **head, char sep);
 void free_sep_list(sep_list **head);
@@ -102,27 +122,10 @@ void free_line_list(line_list **head);
 r_var *add_rvar_node(r_var **head, int lvar, char *var, int lval);
 void free_rvar_list(r_var **head);
 
-/* string functions */
-char *_strcat(char *dest, const char *src);
-char *_strcpy(char *dest, char *src);
-int _strcmp(char *s1, char *s2);
-char *_strchr(char *s, char c);
-int _strspn(char *s, char *accept);
-
 /* memory.c */
 void _memcpy(void *newptr, const void *ptr, unsigned int size);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size);
-
-/* string2.c */
-char *_strdup(const char *s);
-int _strlen(const char *s);
-int cmp_chars(char str[], const char *delim);
-char *_strtok(char str[], const char *delim);
-int _isdigit(const char *s);
-
-/* string3.c */
-void rev_string(char *s);
 
 /* check_syntax_error.c */
 int repeated_char(char *input, int i);
@@ -134,9 +137,6 @@ int check_syntax_error(data_shell *datash, char *input);
 /* loop.c */
 char *without_comment(char *in);
 void shell_loop(data_shell *datash);
-
-/* read_line.c */
-char *read_line(int *i_eof);
 
 /* split.c */
 char *swap_char(char *input, int bool);
@@ -207,7 +207,6 @@ char *error_env(data_shell *datash);
 char *error_syntax(char **args);
 char *error_access(char **args);
 char *error_path(data_shell *datash);
-
 
 /* error2.c */
 int get_error(data_shell *datash, int eval);
