@@ -99,5 +99,3 @@ This is a simple UNIX command line interpreter (shell) that allows users to ente
 1. The shell uses the `getline` function to read user input and the `strtok` function to parse the input into individual command and argument strings.
 2. The `execute_command` function uses the `fork` system call to create a child process to execute the entered command.
 3. The child process runs the command using `execvp`, and the parent process waits for the child process to complete using `wait`.
-
-Feel free to explore and modify the code to add more features or improve the functionality of the shell according to your requirements. -->
