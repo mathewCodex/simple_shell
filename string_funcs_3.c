@@ -12,7 +12,7 @@ int _isdigit(const char *str)
 
 	for (i = 0; str[i]; i++)
 	{
-		if (str[i] < '0' || str[i] > '9')
+		if (str[i] < 48 || str[i] > 57)
 			return (0);
 	}
 
