@@ -2,20 +2,21 @@
 
 /**
  * _isdigit - Program that checks for a digit (0 through 9)
- * @chr: Charater to be checked
+ * @str: String to be checked
  *
  * Return: 1 if digit, 0 otherwise
  */
-int _isdigit(char chr)
+int _isdigit(const char *str)
 {
-	if (chr >= '0' && chr <= '9')
+	unsigned int i;
+
+	for (i = 0; str[i]; i++)
 	{
-		return (1);
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
 	}
-	else
-	{
-		return (0);
-	}
+
+	return (1);
 }
 
 
